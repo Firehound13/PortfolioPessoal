@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/menu.html' %}
+
+<!--================ Start Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Detalhes do Projeto</h2>
+                <div class="page_link">
+                    <a href="{% url 'index' %}">Início</a>
+                    <a href="{% url 'projetos' %}">Projetos</a>
+                    <a href="{% url 'projeto_detalhes' projeto.id %}">Detalhes do Projeto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ End Banner Area =================-->
+
+<!--================Start Portfolio Details Area =================-->
+<section class="portfolio_details_area section_gap">
+    <div class="container">
+        <div class="portfolio_details_inner">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left_img">
+                        <img class="img-fluid" src="{% static 'img/portfolio/python-logo.png' %}" width="300" alt="">
+                    </div>
+                </div>
+                <div class="offset-lg-1 col-lg-5">
+                    <div class="portfolio_right_text mt-30">
+                        <h4 class="text-uppercase">{{ projeto.nome_projeto }}</h4>
+                        <p>
+                            {{ projeto.descricao_projeto }}
+                        </p>
+                        <ul class="list">
+                            <li><span>Cliente</span>: {{ projeto.cliente }}</li>
+                            <li><span>Website</span>: {{ projeto.website }}</li>
+                            <li><span>Finalizado</span>: {{ projeto.data_conclusao }}</li>
+                            <li><span>Linguagem</span>: {{ projeto.linguagem }}</li>
+                            <li><span>Tags</span>: {{ projeto.tags_projeto }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h3>Detalhes do Projeto</h3>
+            <p>{{ projeto.detalhes_projeto }}</p>
+        </div>
+    </div>
+</section>
+<!--================End Portfolio Details Area =================-->
+
+
+{% include 'partials/footer.html' %}
+{% endblock %}
